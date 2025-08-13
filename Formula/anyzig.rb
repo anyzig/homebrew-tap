@@ -1,32 +1,40 @@
 class Anyzig < Formula
   desc "A universal zig executable that runs any version of zig"
   homepage "https://github.com/marler8997/anyzig"
-  version "v2025_08_03"
-  # Placeholder URL - actual binary is downloaded in install method based on architecture
-  url "https://github.com/marler8997/anyzig/archive/refs/tags/#{version}.tar.gz"
-  sha256 "2600445976486c41944bbc73fc0f91d2bf91a5f5c4e56e394767722da934249b"
   license "MIT"
+
+  version "v2025_08_03"
+
+  on_macos do
+    on_arm do
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-aarch64-macos.tar.gz"
+      sha256 "527014b744a14650a144a242935173be457e3528b5d3af45f20ae408793e490c"
+    end
+    on_intel do
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-x86_64-macos.tar.gz"
+      sha256 "497f3b96fa0b255e2e9a531d65b3054df37ef1133cdf994b02518762ca471506"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-aarch64-linux.tar.gz"
+      sha256 "7fded6dd84d130b11edd71bf86681565c01149ef5815fed714859098a058e2ce"
+    end
+    on_intel do
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-x86_64-linux.tar.gz"
+      sha256 "f7075b19e7c1df12844bb4f4fb78c187a8da2aacd44cd6eaa75364c94b9f0083"
+    end
+  end
 
   conflicts_with "zig", because: "both install the `zig` executable"
 
   def install
-    arch = case Hardware::CPU.arch
-        when :arm64
-            "aarch64"
-        else
-            Hardware::CPU.arch.to_s
-        end
-
-    binary_url = "https://github.com/marler8997/anyzig/releases/download/#{version}/anyzig-#{arch}-macos.tar.gz"
-    binary_archive = buildpath/"anyzig-binary.tar.gz"
-
-    system "curl", "--fail", "--location", "--output", binary_archive, binary_url
-    system "tar", "--extract", "--file", binary_archive, "--directory", buildpath
-
-    bin.install buildpath/"zig"
+    bin.install "zig"
   end
 
   test do
-    system bin/"zig", "any", "version"
+    output = shell_output("#{bin}/zig any version")
+    assert_match version.to_s, output.strip
   end
 end
