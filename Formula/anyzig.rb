@@ -1,9 +1,8 @@
 class Anyzig < Formula
-  desc "A universal zig executable that runs any version of zig"
+  desc "Universal zig executable that runs any version of zig"
   homepage "https://github.com/marler8997/anyzig"
+  version "2025.08.03"
   license "MIT"
-
-  version "v2025_08_03"
 
   on_macos do
     on_arm do

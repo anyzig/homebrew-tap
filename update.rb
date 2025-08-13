@@ -56,7 +56,8 @@ def update_formula_content(original_content, new_version, platform_data)
     exit 1
   end
 
-  content = content.gsub(version_pattern, "  version \"#{new_version}\"")
+  brew_version = new_version.sub(/^v/, '').gsub('_', '.')
+  content = content.gsub(version_pattern, "  version \"#{brew_version}\"")
 
   # Check for platform sections
   platform_pattern = /^  on_macos do.*?^  end\n\n^  on_linux do.*?^  end/m
@@ -100,7 +101,7 @@ def update_formula_content(original_content, new_version, platform_data)
   content = content.gsub(platform_pattern, "#{macos_section}\n\n#{linux_section}")
 
   # Verify the replacements actually happened
-  unless content.include?("version \"#{new_version}\"")
+  unless content.include?("version \"#{brew_version}\"")
     $stderr.puts "Error: Failed to update version in formula file"
     exit 1
   end
