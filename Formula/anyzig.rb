@@ -1,7 +1,6 @@
 class Anyzig < Formula
   desc "Universal zig executable that runs any version of zig"
   homepage "https://github.com/marler8997/anyzig"
-  version "2025.08.13"
   license "MIT"
 
   on_macos do
@@ -34,6 +33,6 @@ class Anyzig < Formula
 
   test do
     output = shell_output("#{bin}/zig any version")
-    assert_match version.to_s, output.strip
+    assert_match "v2025_08_13", output.strip
   end
 end
