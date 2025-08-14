@@ -1,28 +1,28 @@
 class Anyzig < Formula
   desc "Universal zig executable that runs any version of zig"
   homepage "https://github.com/marler8997/anyzig"
-  version "2025.08.03"
+  version "2025.08.13"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-aarch64-macos.tar.gz"
-      sha256 "527014b744a14650a144a242935173be457e3528b5d3af45f20ae408793e490c"
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_13/anyzig-aarch64-macos.tar.gz"
+      sha256 "562b57571873ab9a609cc1f4e09c603a878a9218bcd6ccbda085b6cd69e57b74"
     end
     on_intel do
-      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-x86_64-macos.tar.gz"
-      sha256 "497f3b96fa0b255e2e9a531d65b3054df37ef1133cdf994b02518762ca471506"
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_13/anyzig-x86_64-macos.tar.gz"
+      sha256 "2d157b80eb0b28ec995232282d6049ddb30e02e206505e9cb8bb9fac01a04571"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-aarch64-linux.tar.gz"
-      sha256 "7fded6dd84d130b11edd71bf86681565c01149ef5815fed714859098a058e2ce"
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_13/anyzig-aarch64-linux.tar.gz"
+      sha256 "d732ce1ef4bb2479bc1e64429c3cdc3779953ca34e3cc0848effc546301c04de"
     end
     on_intel do
-      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_03/anyzig-x86_64-linux.tar.gz"
-      sha256 "f7075b19e7c1df12844bb4f4fb78c187a8da2aacd44cd6eaa75364c94b9f0083"
+      url "https://github.com/marler8997/anyzig/releases/download/v2025_08_13/anyzig-x86_64-linux.tar.gz"
+      sha256 "49cac16c4621dd52a80e9d94ff190f7320db3bb74959ef207f47fb694bf3b546"
     end
   end
 
